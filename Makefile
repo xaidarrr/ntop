@@ -4,6 +4,8 @@ CXXFLAGS := -Wall -Wextra -std=c++17 -Iinclude
 SRC_DIR := src
 BUILD_DIR := build
 
+LIBS = -lncurses
+
 TARGET := my_program
 
 SRCS := $(wildcard $(SRC_DIR)/*.cpp)
@@ -12,7 +14,7 @@ OBJS := $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRCS))
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(LIBS)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp | $(BUILD_DIR)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
