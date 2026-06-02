@@ -7,8 +7,9 @@ int main() {
 
     while(true) {
         pm.update();
+        renderer.handle_input(pm.get_processes().size());
         renderer.draw(pm.get_processes());
-        sleep(3);
+        usleep(100000);
     }
 
     return 0;

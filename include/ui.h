@@ -8,6 +8,8 @@ public:
         cbreak();
         noecho();
         curs_set(0);
+        keypad(stdscr, TRUE);
+        nodelay(stdscr, TRUE);
     }
 
     ~NcursesRenderer() {
@@ -15,4 +17,8 @@ public:
     }
 
     void draw(std::vector<ProcessInfo>& procs);
+    void handle_input(int proc_count);
+
+private:
+    int scroll_offset_ = 0;
 };
