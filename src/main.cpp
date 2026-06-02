@@ -3,11 +3,11 @@
 
 int main() {
     ProcessManager pm;
-    NcursesRenderer* renderer = new NcursesRenderer();
+    NcursesRenderer renderer = NcursesRenderer();
 
     while(true) {
         pm.update();
-        renderer->draw(pm.get_processes());
+        renderer.draw(pm.get_processes());
         sleep(3);
     }
 
