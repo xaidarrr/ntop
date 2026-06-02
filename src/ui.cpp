@@ -16,7 +16,7 @@ void NcursesRenderer::handle_input(int proc_count) {
 }
 
 void NcursesRenderer::draw(std::vector<ProcessInfo>& procs) {
-    clear();
+    erase();
     attron(A_BOLD);
     mvprintw(0, 0, "%-6s %-32s %10s %12s", "PID", "NAME", "STATE", "MEM (MB)");
     attroff(A_BOLD);
