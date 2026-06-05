@@ -123,5 +123,10 @@ std::vector<ProcessInfo> ProcessManager::readProcData() {
     }
 
     prev_proc_times_ = cur_proc_times;
+
+    std::sort(processes.begin(), processes.end(), [](ProcessInfo& a, ProcessInfo& b) {
+        return a.get_cpu_percent() > b.get_cpu_percent();
+    });
+
     return processes;
 }
