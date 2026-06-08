@@ -5,10 +5,18 @@
 #include <unordered_map>
 #include <vector>
 
-class ProcessManager {
+class IProcessManager {
 public:
-    void update();
-    std::vector<ProcessInfo>& get_processes() { return processes_; }
+    virtual ~IProcessManager() = default;
+
+    virtual void update() = 0; 
+    virtual std::vector<ProcessInfo>& get_processes() = 0;
+};
+
+class ProcessManager : public IProcessManager {
+public:
+    void update() override;
+    std::vector<ProcessInfo>& get_processes() override { return processes_; }
 
 private:
     std::vector<ProcessInfo> readProcData();
