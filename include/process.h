@@ -1,19 +1,19 @@
 #pragma once
-#include <vector>
 #include <string>
 #include <unordered_map>
+#include <vector>
 
 class ProcessInfo {
 public:
-    ProcessInfo(int pid, std::string name, std::string state, 
+    ProcessInfo(int pid, const std::string& name, const std::string& state, 
         int virt_mem, float cpu_percent, float mem_percent);
 
-    int get_pid() { return pid_; }
-    std::string get_name() { return name_; }
-    std::string get_state() { return state_; }
-    int get_virt_mem() { return virt_mem_; }
-    float get_cpu_percent() { return cpu_percent_; }
-    float get_mem_percent() { return mem_percent_; } 
+    int get_pid() const { return pid_; }
+    std::string get_name() const { return name_; }
+    std::string get_state() const { return state_; }
+    int get_virt_mem() const { return virt_mem_; }
+    float get_cpu_percent() const { return cpu_percent_; }
+    float get_mem_percent() const { return mem_percent_; } 
     
 private:
     int pid_;
@@ -32,7 +32,7 @@ public:
 private:
     std::vector<ProcessInfo> readProcData();
     long get_total_cpu_time();
-    long get_total_mem();
+    unsigned int get_total_mem();
 
     std::unordered_map<int, long> prev_proc_times_;
     long prev_total_cpu_ = 0;

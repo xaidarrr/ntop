@@ -1,8 +1,21 @@
 #include "ui.h"
 
+NcursesRenderer::NcursesRenderer() {
+    initscr();
+    cbreak();
+    noecho();
+    curs_set(0);
+    keypad(stdscr, TRUE);
+    nodelay(stdscr, TRUE);
+}
+
+NcursesRenderer::~NcursesRenderer() {
+    endwin();
+}
+
 void NcursesRenderer::handle_input(int proc_count) {
     int visible = LINES - 3;
-    int ch;
+    int ch = 0;
     while((ch = getch()) != ERR) {
         switch (ch) {
             case KEY_UP:
