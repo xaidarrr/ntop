@@ -1,6 +1,7 @@
-#include "process.h"
+#include "process_info.h"
 
 #include <ncurses.h>
+#include <vector>
 
 class NcursesRenderer {
 public:

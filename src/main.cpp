@@ -1,4 +1,6 @@
 #include "ui.h"
+#include "process_manager.h"
+
 #include <unistd.h>
 
 int main() {
