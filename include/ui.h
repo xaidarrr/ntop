@@ -1,17 +1,10 @@
-#include "process_info.h"
-
-#include <vector>
-
-class IRenderer {
-public:
-    virtual ~IRenderer() = default;
-    
-    virtual void draw(std::vector<ProcessInfo>& procs) = 0;
-    virtual void handle_input(int proc_count) = 0;
-};
+#include "irenderer.h"
 
 class NcursesRenderer final : public IRenderer {
 public:
+    NcursesRenderer();
+    ~NcursesRenderer() override;
+
     void draw(std::vector<ProcessInfo>& procs) override;
     void handle_input(int proc_count) override;
 
