@@ -1,17 +1,8 @@
 #pragma once
-#include "process_info.h"
+#include "iprocess_manager.h"
 
 #include <string>
 #include <unordered_map>
-#include <vector>
-
-class IProcessManager {
-public:
-    virtual ~IProcessManager() = default;
-
-    virtual void update() = 0; 
-    virtual std::vector<ProcessInfo>& get_processes() = 0;
-};
 
 class ProcessManager final : public IProcessManager {
 public:
