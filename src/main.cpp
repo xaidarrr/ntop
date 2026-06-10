@@ -1,11 +1,12 @@
 #include "ui.h"
 #include "process_manager.h"
 
+#include <memory>
 #include <unistd.h>
 
 int main() {
-    IProcessManager* pm = new ProcessManager();
-    IRenderer* renderer = new NcursesRenderer();
+    std::unique_ptr<IProcessManager> pm = std::make_unique<ProcessManager>();
+    std::unique_ptr<IRenderer> renderer = std::make_unique<NcursesRenderer>();
 
     while(true) {
         pm->update();
@@ -13,9 +14,6 @@ int main() {
         renderer->draw(pm->get_processes());
         usleep(100000);
     }
-
-    delete pm;
-    delete renderer;
 
     return 0;
 }

@@ -1,6 +1,8 @@
 #include "ui.h"
 
-NcursesRenderer::NcursesRenderer() : scroll_offset_(0) {
+#include <ncurses.h>
+
+NcursesRenderer::NcursesRenderer() : scroll_offset_{0} {
     initscr();
     cbreak();
     noecho();

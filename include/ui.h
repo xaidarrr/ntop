@@ -1,6 +1,5 @@
 #include "process_info.h"
 
-#include <ncurses.h>
 #include <vector>
 
 class IRenderer {
@@ -11,14 +10,10 @@ public:
     virtual void handle_input(int proc_count) = 0;
 };
 
-class NcursesRenderer : public IRenderer {
+class NcursesRenderer final : public IRenderer {
 public:
-    NcursesRenderer();
-    
     void draw(std::vector<ProcessInfo>& procs) override;
     void handle_input(int proc_count) override;
-
-    ~NcursesRenderer() override;
 
 private:
     int scroll_offset_ = 0;

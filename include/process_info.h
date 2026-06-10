@@ -1,12 +1,14 @@
 #pragma once
 #include <string>
 
-struct ProcessInfo {
+struct ProcessInfo final {
 public:
+    ProcessInfo() = delete;
+
     ProcessInfo(int pid, const std::string& name, const std::string& state, 
         int virt_mem, float cpu_percent, float mem_percent) :
-    pid_(pid), name_(name), state_(state), 
-    virt_mem_(virt_mem), cpu_percent_(cpu_percent), mem_percent_(mem_percent) {}
+    pid_{pid}, name_{name}, state_{state}, 
+    virt_mem_{virt_mem}, cpu_percent_{cpu_percent}, mem_percent_{mem_percent} {}
 
     int get_pid() const { return pid_; }
     std::string get_name() const { return name_; }

@@ -13,8 +13,10 @@ public:
     virtual std::vector<ProcessInfo>& get_processes() = 0;
 };
 
-class ProcessManager : public IProcessManager {
+class ProcessManager final : public IProcessManager {
 public:
+    ProcessManager() = default;
+
     void update() override;
     std::vector<ProcessInfo>& get_processes() override { return processes_; }
 
