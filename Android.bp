@@ -1,0 +1,22 @@
+cc_binary {
+    name: "ntop",
+
+    srcs: [
+        "src/*.cpp",
+    ]
+
+    local_include_dirs: ["include"],
+
+    cflags: [
+        "-Wall",
+        "-Wextra",
+    ],
+
+    cpp_std: "c++17",
+
+    shared_libs: [
+        "libncurses",
+    ],
+
+    vendor: true,
+}
