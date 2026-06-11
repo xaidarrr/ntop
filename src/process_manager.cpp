@@ -16,7 +16,7 @@ void ProcessManager::update() {
 
 long ProcessManager::get_total_cpu_time() {
     std::ifstream cpu_data("/proc/stat");
-    std::string label;
+    std::string label{""};
     unsigned int user{0};
     unsigned int nice{0};
     unsigned int system{0};
@@ -30,8 +30,8 @@ long ProcessManager::get_total_cpu_time() {
 
 unsigned int ProcessManager::get_total_mem() {
     std::ifstream mem_data("/proc/meminfo");
-    std::string label = "";
-    std::string unit = "";
+    std::string label{""};
+    std::string unit{""};
     unsigned int total{0};
     mem_data >> label >> total >> unit;
     return total;
@@ -58,16 +58,16 @@ std::vector<ProcessInfo> ProcessManager::readProcData() {
         if (!proc_data) continue;
 
         int pid = std::stoi(proc_dir_name);
-        std::string line = "";
-        std::string proc_name = "";
-        std::string proc_state = "";
+        std::string line{""};
+        std::string proc_name{""};
+        std::string proc_state{""};
         int virt_mem{0};
         int virt_rss{0};
 
         while (std::getline(proc_data, line)) {
             if (line.find("Name:") == 0) {
                 std::stringstream ss(line);
-                std::string label = "";
+                std::string label{""};
 
                 ss >> label;
                 std::getline(ss >> std::ws, proc_name);
@@ -75,23 +75,23 @@ std::vector<ProcessInfo> ProcessManager::readProcData() {
 
             if (line.find("State:") == 0) {
                 std::stringstream ss(line);
-                std::string label = "";
+                std::string label{""};
 
                 ss >> label >> proc_state;
             }
 
             if (line.find("VmSize:") == 0) {
                 std::stringstream ss(line);
-                std::string label = "";
-                std::string unit = "";
+                std::string label{""};
+                std::string unit{""};
 
                 ss >> label >> virt_mem >> unit;
                 virt_mem /= 1024;
             }
             if (line.find("VmRSS:") == 0) {
                 std::stringstream ss(line);
-                std::string label = "";
-                std::string unit = "";
+                std::string label{""};
+                std::string unit{""};
 
                 ss >> label >> virt_rss >> unit;
             }
@@ -102,7 +102,7 @@ std::vector<ProcessInfo> ProcessManager::readProcData() {
         long proc_time{0};
         long utime{0};
         long stime{0};
-        std::string temp = "";
+        std::string temp{""};
 
         stat >> temp >> temp >>  temp >> temp >>  temp >> temp
              >> temp >> temp >>  temp >> temp >>  temp >> temp >> temp
