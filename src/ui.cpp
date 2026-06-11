@@ -1,6 +1,10 @@
 #include "ui.h"
 
-#include <ncurses.h>
+#ifdef __ANDROID__
+    #include <curses.h>
+#else
+    #include <ncurses.h>
+#endif
 
 NcursesRenderer::NcursesRenderer() : scroll_offset_{0} {
     initscr();
